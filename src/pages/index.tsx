@@ -1,4 +1,5 @@
 import { Header } from '@/components/Header'
+import { PizzaDay } from '@/components/PizzaDay'
 import Head from 'next/head'
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
         <title>Pizza Stoom</title>
       </Head>
       <Header />
+      <PizzaDay />
     </div>
   )
 }

@@ -2,12 +2,17 @@ import { Header } from '@/components/Header'
 import { PizzaDay } from '@/components/PizzaDay'
 import Head from 'next/head'
 
-import styles from '../styles/index.module.scss'
+import styles from './index.module.scss'
 import { PizzaDough } from '@/components/PizzaDough'
 import { GetStaticProps } from 'next'
 import { api } from '@/services/api'
+import { usePizza } from '@/context/PizzaContext'
 
 export default function Home({ igredients }) {
+  const teste = usePizza()
+
+  console.log('CONTEXTO', teste)
+
   return (
     <div>
       <Head>

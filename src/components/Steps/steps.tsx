@@ -1,17 +1,17 @@
 import styles from './steps.module.scss'
 
-interface StepsProps {
-  selected: number
+interface StepProgressProps {
+  active: number
 }
 
-export function Steps({ selected }: StepsProps) {
+export function StepProgress({ active }: StepProgressProps) {
   return (
     <div>
-      <ul className={styles.progressBar}>
-        <li className={styles.selected}>Massa</li>
-        <li className={selected > 2 ? styles.selected : ''}>Tamanho</li>
-        <li className={selected > 3 ? styles.selected : ''}>Recheio</li>
-        <li className={selected > 4 ? styles.selected : ''}>Finalizar</li>
+      <ul className={styles.progressbar}>
+        <li className={styles.active}>Massa</li>
+        <li className={active > 2 ? styles.active : ''}>Tamanho</li>
+        <li className={active > 3 ? styles.active : ''}>Recheio</li>
+        <li className={active > 4 ? styles.active : ''}>Finalizar</li>
       </ul>
     </div>
   )

@@ -1,14 +1,13 @@
 @import '../../styles/color.scss';
 
-
-.progressBar {
+.progressbar {
   counter-reset: step;
 
   li {
     list-style-type: none;
-    float: left;
     width: 25%;
-    font-size: 16px;
+    float: left;
+    font-size: 13px;
     position: relative;
     text-align: center;
     text-transform: uppercase;
@@ -50,13 +49,13 @@
     }
 
     &.active:before {
-      color: $white;
-      border-color: $green-500;
-      background-color: $green-500;
+      color:$white;
+      border-color:$green-500;
+      background-color:$green-500;
     }
 
     &.active + li:after {
-      background-color: $green-500;
+      background-color:$green-500;
     }
   }
 }

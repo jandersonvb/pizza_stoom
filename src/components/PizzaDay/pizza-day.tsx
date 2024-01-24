@@ -20,6 +20,7 @@ export function PizzaDay() {
           alt="Pizza do dia"
           width={300}
           height={300}
+          quality={100}
         />
         <div className={styles.description}>
           <h4>Pizza Portuguesa</h4>

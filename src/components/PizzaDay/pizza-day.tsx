@@ -3,7 +3,18 @@ import Image from 'next/image'
 import styles from './pizza-day.module.scss'
 import { BiCheck } from 'react-icons/bi'
 
-export function PizzaDay() {
+interface PizzaDayProps {
+  pizza: {
+    image: string
+    ingredients: string
+    dough: string
+    points: number
+    price: number
+    title: string
+  }
+}
+
+export function PizzaDay({ pizza }: PizzaDayProps): JSX.Element {
   return (
     <div className={styles.container}>
       <h3>Pizza do dia:</h3>
@@ -11,28 +22,33 @@ export function PizzaDay() {
         <div className={styles.wrapperStar}>
           <div className={styles.star}>
             <p>
-              <strong>50</strong> pontos
+              <strong>{pizza.points}</strong> pontos
             </p>
           </div>
         </div>
         <Image
-          src="/images/pizza-calabresa.jpg"
-          alt="Pizza do dia"
+          src={pizza.image}
+          alt=""
           width={300}
           height={300}
           quality={100}
         />
         <div className={styles.description}>
-          <h4>Pizza Portuguesa</h4>
+          <h4>{pizza.title}</h4>
           <strong>Massa:</strong>
-          <p>Portuguesa</p>
+          <p>{pizza.dough}</p>
           <strong>Ingredientes:</strong>
-          <p>
-            Molho, mussarela, presunto, ovo, cebola, tomate, azeitona, calabresa{' '}
-          </p>
+          <p>{pizza.ingredients}</p>
 
           <div className={styles.price}>
-            <p>R$ 35,00</p>
+            <p>
+              {pizza.price.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}
+            </p>
             <button>
               Quero!
               <BiCheck size={30} />

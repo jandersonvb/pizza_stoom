@@ -5,21 +5,23 @@ const getPizzas = (request: NextApiRequest, response: NextApiResponse) => {
     {
       id: 1,
       price: 54,
-      tittle: 'Frango com catupiry',
+      title: 'Frango com catupiry',
       ingredients: 'olho de tomate, Muçarela, Frango, Catupiry',
       dough: 'siciliana',
       points: 30,
-      img: 'http://www.pizzacesar.com.br/class/resize.php?arquivo=../uploads/1010201212234587813019.jpg&largura=1134&altura=449&tipo=crop',
+      image:
+        'https://images.unsplash.com/photo-1576458088443-04a19bb13da6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHBpenphJTIwZnJhbmdvJTIwY29tJTIwY2F0dXBpcnl8ZW58MHx8MHx8fDA%3D',
       size: 'Pequena',
     },
     {
       id: 2,
       price: 45,
-      tittle: 'Calabresa',
+      title: 'Calabresa',
       ingredients: 'Molho de tomate, Muçarela, Calabresa',
       dough: 'nova-iorquina',
       points: 40,
-      img: 'http://www.pizzacesar.com.br/class/resize.php?arquivo=../uploads/1110201205137297594650.jpg&largura=1134&altura=449&tipo=crop',
+      image:
+        'https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGl6emElMjBjYWxhYnJlc2F8ZW58MHx8MHx8fDA%3D',
       size: 'Normal',
     },
     {
@@ -29,7 +31,8 @@ const getPizzas = (request: NextApiRequest, response: NextApiResponse) => {
       ingredients: 'Molho de tomate, Muçarela Escarola Refogada, Azeitonas',
       dough: 'napolitana',
       points: 50,
-      img: 'http://www.pizzacesar.com.br/class/resize.php?arquivo=../uploads/1110201204543598968966.jpg&largura=1134&altura=449&tipo=crop',
+      image:
+        'https://images.unsplash.com/photo-1528137871618-79d2761e3fd5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGl6emElMjBFc2Nhcm9sYXxlbnwwfHwwfHx8MA%3D%3D',
       size: 'Grande',
     },
   ]

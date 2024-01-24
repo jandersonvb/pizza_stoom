@@ -3,16 +3,11 @@ import { PizzaDay } from '@/components/PizzaDay'
 import Head from 'next/head'
 
 import { PizzaDough } from '@/components/PizzaDough'
-import { usePizza } from '@/context/PizzaContext'
 import { api } from '@/services/api'
 import { GetStaticProps } from 'next'
 import styles from './index.module.scss'
 
-export default function Home({ igredients }) {
-  const teste = usePizza()
-
-  console.log('CONTEXTO', teste)
-
+export default function Home({ igredients, pizzaDay }) {
   return (
     <div>
       <Head>
@@ -20,7 +15,7 @@ export default function Home({ igredients }) {
       </Head>
       <Header />
       <div className={styles.container}>
-        <PizzaDay />
+        <PizzaDay pizza={pizzaDay} />
         <PizzaDough ingredients={igredients} />
       </div>
     </div>
@@ -30,10 +25,15 @@ export default function Home({ igredients }) {
 export const getStaticProps: GetStaticProps = async () => {
   const { data } = await api.get('/ingredients')
 
+  // pegar pizzas
+  const response = await api.get('/pizzas')
+
+  const pizzaDay = response.data[1]
+
   const igredients = data
 
   return {
-    props: { igredients },
+    props: { igredients, pizzaDay },
     revalidate: 60 * 60 * 24, // 24 hours
   }
 }

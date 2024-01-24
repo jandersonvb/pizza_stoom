@@ -20,8 +20,6 @@ interface PizzaDoughProps {
 export function PizzaDough({
   ingredients: { massas } = { massas: [] },
 }: PizzaDoughProps) {
-  console.log('AS MASSAS:', massas)
-
   return (
     <div className={styles.container}>
       <h1>Ou monte sua pizza</h1>

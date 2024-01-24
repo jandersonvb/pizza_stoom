@@ -4,8 +4,10 @@ import Head from 'next/head'
 
 import styles from '../styles/index.module.scss'
 import { PizzaDough } from '@/components/PizzaDough'
+import { GetStaticProps } from 'next'
+import { api } from '@/services/api'
 
-export default function Home() {
+export default function Home({ igredients }) {
   return (
     <div>
       <Head>
@@ -14,34 +16,19 @@ export default function Home() {
       <Header />
       <div className={styles.container}>
         <PizzaDay />
-        <PizzaDough
-          ingredients={{
-            massas: [
-              {
-                id: 1,
-                title: 'Tradicional',
-                price: 20,
-                description: 'Massa fina e crocante',
-                image: '/images/pizza-calabresa.jpg',
-              },
-              {
-                id: 2,
-                title: 'Pan',
-                price: 25,
-                description: 'Massa alta e fofinha',
-                image: '/images/pizza-com-queijo.jpg',
-              },
-              {
-                id: 3,
-                title: 'Nova-iorquina',
-                price: 30,
-                description: 'Massa média e crocante',
-                image: '/images/pizza-frango.jpg',
-              },
-            ],
-          }}
-        />
+        <PizzaDough ingredients={igredients} />
       </div>
     </div>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const { data } = await api.get('/ingredients')
+
+  const igredients = data
+
+  return {
+    props: { igredients },
+    revalidate: 60 * 60 * 24, // 24 hours
+  }
 }

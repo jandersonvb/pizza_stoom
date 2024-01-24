@@ -2,8 +2,11 @@ import Image from 'next/image'
 
 import styles from './header.module.scss'
 import Link from 'next/link'
+import { usePizza } from '@/context/PizzaContext'
 
 export function Header() {
+  const { points } = usePizza()
+
   return (
     <header className={styles.container}>
       <div className={styles.logo}>
@@ -16,10 +19,16 @@ export function Header() {
         </div>
       </div>
       <div className={styles.stoompoints}>
-        <Image src="/images/stoom-points.png" alt="" width={70} height={70} />
+        <Image
+          src="/images/stoom-points.png"
+          alt=""
+          width={70}
+          height={70}
+          quality={100}
+        />
         <div>
           <p>Stoom Points</p>
-          <strong>Pontos</strong>
+          <strong>{points} Pontos</strong>
         </div>
       </div>
     </header>

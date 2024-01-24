@@ -2,6 +2,8 @@ import Image from 'next/image'
 
 import styles from './pizza-day.module.scss'
 import { BiCheck } from 'react-icons/bi'
+import { usePizza } from '@/context/PizzaContext'
+import { useRouter } from 'next/dist/client/router'
 
 interface PizzaDayProps {
   pizza: {
@@ -15,6 +17,18 @@ interface PizzaDayProps {
 }
 
 export function PizzaDay({ pizza }: PizzaDayProps): JSX.Element {
+  const { sumTotal, handlePizza, setImage } = usePizza()
+
+  const router = useRouter()
+
+  function handleAddPizza() {
+    sumTotal(pizza.price)
+    handlePizza(pizza)
+    setImage(pizza.image)
+
+    router.push('/build-pizza/finish-pizza')
+  }
+
   return (
     <div className={styles.container}>
       <h3>Pizza do dia:</h3>
@@ -49,7 +63,7 @@ export function PizzaDay({ pizza }: PizzaDayProps): JSX.Element {
                 maximumFractionDigits: 2,
               })}
             </p>
-            <button>
+            <button onClick={handleAddPizza}>
               Quero!
               <BiCheck size={30} />
             </button>

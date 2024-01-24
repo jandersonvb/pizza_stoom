@@ -2,6 +2,8 @@ import Image from 'next/image'
 
 import styles from './pizza-dough.module.scss'
 import { ImPlay3 } from 'react-icons/im'
+import { usePizza } from '@/context/PizzaContext'
+import { useRouter } from 'next/dist/client/router'
 
 interface Massas {
   id: number
@@ -17,15 +19,24 @@ interface PizzaDoughProps {
   }
 }
 
-export function PizzaDough({
-  ingredients: { massas } = { massas: [] },
-}: PizzaDoughProps) {
+export function PizzaDough({ ingredients: { massas } }: PizzaDoughProps) {
+  const { setMassa, sumTotal } = usePizza()
+
+  const router = useRouter()
+
+  function addDoughInPIzza(dough: string, price: number) {
+    setMassa(dough)
+    sumTotal(price)
+
+    router.push('/build-pizza/size-pizza')
+  }
+
   return (
     <div className={styles.container}>
       <h1>Ou monte sua pizza</h1>
       <div className={styles.steps}>
         <p>Selecione sua massa:</p>
-        <div>0 / 3</div>
+        <div>1 / 4</div>
       </div>
       <ul>
         {massas.map((massa) => (
@@ -39,27 +50,29 @@ export function PizzaDough({
                 quality={100}
               />
               <div className={styles.pizzaDoughDescription}>
-                <div className={styles.checked}>
-                  <h2>{massa.title}</h2>
-                  <input
-                    type="radio"
-                    id="nova-iorquina"
-                    name="dough"
-                    value="nova-iorquina"
-                  />
-                </div>
+                <h2> {massa.title}</h2>
                 <p>{massa.description}</p>
-                <span>R$ {massa.price}</span>
+                <div className={styles.price}>
+                  <strong>
+                    {massa.price.toLocaleString('pt-BR', {
+                      style: 'currency',
+                      currency: 'BRL',
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
+                  </strong>
+                  <button
+                    onClick={() => addDoughInPIzza(massa.title, massa.price)}
+                  >
+                    montar meu pedido
+                    <ImPlay3 size={20} color="#fff" />
+                  </button>
+                </div>
               </div>
             </div>
           </li>
         ))}
       </ul>
-
-      <button>
-        montar meu pedido
-        <ImPlay3 size={20} color="#fff" />
-      </button>
     </div>
   )
 }

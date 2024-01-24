@@ -1,10 +1,9 @@
-import { Header } from '../../components/Header'
-import styles from './build-pizza.module.scss'
-import { BiCheck } from 'react-icons/bi'
-import { GetStaticProps } from 'next'
-import { api } from '../../services/api'
 import { Steps } from '@/components/Steps'
+import { GetStaticProps } from 'next'
 import Image from 'next/image'
+import { BiCheck } from 'react-icons/bi'
+import { api } from '../../services/api'
+import styles from './build-pizza.module.scss'
 
 interface SizeProps {
   id: number

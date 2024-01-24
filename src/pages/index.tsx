@@ -1,9 +1,14 @@
-import { Inter } from "next/font/google";
+import { Inter } from 'next/font/google'
+import Head from 'next/head'
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-    <h1>Hello World</h1>
-  );
+    <div>
+      <Head>
+        <title>Pizza Stoom</title>
+      </Head>
+    </div>
+  )
 }

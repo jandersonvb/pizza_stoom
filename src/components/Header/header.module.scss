@@ -1,0 +1,59 @@
+@import '../../styles/color.scss';
+
+.container { 
+  background-color: $blue-500;
+  height: 300px;
+  display: flex; 
+  justify-content: space-between;
+  padding: 24px;
+
+}
+
+.logo {
+  display: flex;
+
+
+  h1 {
+    color: $white;
+    font-size: 40px;
+    font-weight: 700;
+    margin-left: 16px;
+  }
+
+  h2 {
+    color: $orange-500;
+    font-size: 24px;
+    font-weight: 500;
+    margin-left: 16px;
+  
+  }
+  
+}
+
+.stoompoints {
+  display: flex;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+
+    p {
+      color: $orange-500;
+      font-size: 24px;
+      font-weight: 500;
+      margin-left: 16px;
+    }
+  
+    strong {
+      color: $orange-500;
+      font-size: 16px;
+      font-weight: 700;
+      margin-left: 16px;
+    }
+  }
+
+  
+ 
+}
+

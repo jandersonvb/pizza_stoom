@@ -1,4 +1,3 @@
-import { Header } from '@/components/Header'
 import { PizzaDay } from '@/components/PizzaDay'
 import Head from 'next/head'
 
@@ -7,13 +6,12 @@ import { api } from '@/services/api'
 import { GetStaticProps } from 'next'
 import styles from './index.module.scss'
 
-export default function Home({ igredients, pizzaDay }) {
+export default function Home({ igredients, pizzaDay }: any) {
   return (
     <div>
       <Head>
         <title>Pizza Stoom</title>
       </Head>
-      <Header />
       <div className={styles.container}>
         <PizzaDay pizza={pizzaDay} />
         <PizzaDough ingredients={igredients} />
